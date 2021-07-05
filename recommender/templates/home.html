@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if uncomparable %}
+        <h1>Picked For You</h1>
+        <br>
+        <div class="w3-row">
+            {% for movie in uncomparable %}
+                <div class="w3-half">
+                    <p><a href="/{{ movie.movie_id }}/">{{ movie.title }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% elif search_results %}
+        <h2>Search Results...</h2>
+        {% for movie in search_results %}
+            <div class="w3-row w3-margin">
+                <div class="w3-twothird w3-container">
+                    <h4><a href="/{{ movie.movie_id }}/">{{ movie.title }}</a></h4>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <h1>Cannot Find</h1>
+    {% endif %}
+{% endblock %}
